@@ -6,6 +6,7 @@ We aim to improve results from the article "Using publicly available satellite i
 
 2. Rearrange data by running dataOvPrep.ipynb.
 3. Download all data by running all dataDownload_*.ipynb
+4. Clean up data by running dataCleanup.ipynb
 
 
 ## Model training
