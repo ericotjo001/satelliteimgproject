@@ -14,10 +14,12 @@ class ResNet50sw(nn.Module):
     def __init__(self) -> None :
         super(ResNet50sw, self).__init__()
         self.backbone = mod.resnet50(weights=mod.ResNet50_Weights.DEFAULT, progress=False) # the ImageNet pretraiend model!
-        self.fc = nn.Linear(1000,1) # wealth index is a scalar, so output is 1 dim. 
+        self.alpha = nn.Parameter(torch.tensor(5.))
+        self.tanh = nn.Tanh()
 
     def forward(self,x):
-        return self.fc(self.backbone(x)).squeeze(1)        
+        return self.tanh(self.backbone(x)) * self.alpha
+
 
 
 class SaveLoadManager():
@@ -39,7 +41,8 @@ class SaveLoadManager():
                 'optimizer_state_dict':None,
                 
                 'best_epoch': None,
-                'best_val_loss': None,
+                'best_val_r2': None,
+                'best_fitting_model': None,
             }
         else:
             print('loading model states...')

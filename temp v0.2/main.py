@@ -16,5 +16,8 @@ if __name__=='__main__':
     elif args.mode == 'training':
         from src.training import training_entry
         training_entry(parser)
+    elif args.mode == 'prep_reval':
+        from src.eval import eval_entry
+        eval_entry(parser)
     else:
         raise NotImplementedError('invalud mode')

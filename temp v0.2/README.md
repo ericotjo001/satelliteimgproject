@@ -3,6 +3,9 @@ We aim to improve results from the article "Using publicly available satellite i
 ## Installation
 conda env create -f env.yml
 
+AlLso, to download cv2
+pip install opencv-python
+
 Furthermore, on linux/windows
 conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
 
@@ -16,4 +19,8 @@ conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
 
 
 ## Model training
-TBU
+Using entropy of image in the input.
+```
+python main.py --n_epoch 4
+```
+Doesn't seem to work well so far.
